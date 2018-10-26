@@ -6,128 +6,61 @@ namespace cis237_assignment4
 {
     abstract class Droid : IDroid
     {
-        // Constant for Droid Cost. Must be a static variable vs const so it can be assigned to
-        // in the constructor of child classes.
-        protected static decimal MODEL_COST;
+        // Basic costs for all droids
+        private const decimal UNIT_BASE_COST = 20.00m;
+        private const decimal POLYSKIN_MAT_COST = 15.0m;
+        private const decimal METASKIN_MAT_COST = 25.0m;
+        private const decimal CERASKIN_MAT_COST = 50.0m;
+        private const decimal COLOR_BLACK_COST = 10.0m;
+        private const decimal COLOR_RED_COST = 15.0m;
+        private const decimal COLOR_WHITE_COST = 20.0m;
 
-        // Some protected variables for the class
-        protected string material;
-        protected string color;
+        // properties shared by all droids
+        private string Material { get; }
+        private string Color { get; }
+        protected decimal BaseCost { get; set; }
+        public abstract decimal TotalCost { get; set; }
+        public string Name { get; set; }
 
-        protected decimal baseCost;
-        protected decimal totalCost;
-
-        // Create a inner class for the sole purpose of acting like a collection of constants
-        public sealed class Materials
+        /// <summary>
+        /// Constructor used as a base by all child classes. Requires
+        /// parameters for basic droid material and droid color. Also
+        /// calls a CalculateSubTotal method which stores the combined prices
+        /// associated with those parameters in BaseCost protected property.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        protected Droid(string material, string color)
         {
-            private Materials() {}
-            public const string Carbonite = "Carbonite";
-            public const string Vanadium = "Vanadium";
-            public const string Quadranium = "Quadranium";
-            public const string Tears_Of_A_Jedi = "Tears Of A Jedi";
+            BaseCost = UNIT_BASE_COST;
+            this.Material = material;
+            this.Color = color;
+            CalculateSubtotal();
         }
 
-        // Create a inner class for the sole purpose of acting like a collection of constants
-        public sealed class Colors
+        // subtotal method used to add skin and color costs to the base cost
+        private void CalculateSubtotal()
         {
-            private Colors() {}
-            public const string White = "White";
-            public const string Red = "Red";
-            public const string Green = "Green";
-            public const string Blue = "Blue";
+            if (this.Material == "Polyskin") BaseCost += POLYSKIN_MAT_COST;
+            if (this.Material == "Metaskin") BaseCost += METASKIN_MAT_COST;
+            if (this.Material == "Ceraskin") BaseCost += CERASKIN_MAT_COST;
+            if (this.Color == "Black") BaseCost += COLOR_BLACK_COST;
+            if (this.Color == "Red") BaseCost += COLOR_RED_COST;
+            if (this.Color == "White") BaseCost += COLOR_WHITE_COST;
         }
 
-        // The public property for TotalCost
-        public decimal TotalCost
-        {
-            get { return totalCost; }
-            set { totalCost = value; }
-        }
-
-        // Constructor that takes the main 2 parameters shared amongst all 4 instanceable types of droids
-        public Droid(string Material, string Color)
-        {
-            this.material = Material;
-            this.color = Color;
-        }
-
-        // Virtual method that can be overridden in the derived classes if needed.
-        // This implementation calculates the cost based on the material used for the droid
-        protected virtual void CalculateBaseCost()
-        {
-            baseCost = this.getMaterialCost() + this.getColorCost();
-        }
-
-        // Abstract method that MUST be overriden in the derived class to calculate the total cost
-        public abstract void CalculateTotalCost();
-
-        // Overriden toString method that will return a string representing the basic information for any droid
+        /// <summary>
+        /// returns the basic droid information when called from any child class.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "Material: " + this.material + Environment.NewLine +
-                    "Color: " + this.color + Environment.NewLine;
+            return TotalCost.ToString("C") + " " + Color + " " + Material + " " + Name + " ";
         }
 
-        // Method to get the cost of a certain material.
-        private decimal getMaterialCost()
-        {
-            decimal materialCost;
-
-            switch (this.material)
-            {
-                case Materials.Carbonite:
-                    materialCost = 100.00m;
-                    break;
-
-                case Materials.Vanadium:
-                    materialCost = 120.00m;
-                    break;
-
-                case Materials.Quadranium:
-                    materialCost = 150.00m;
-                    break;
-
-                case Materials.Tears_Of_A_Jedi:
-                    materialCost = 200.00m;
-                    break;
-
-                default:
-                    materialCost = 50.00m;
-                    break;
-            }
-
-            return materialCost;
-        }
-
-        // Method to get the cost of a certain color.
-        private decimal getColorCost()
-        {
-            decimal colorCost;
-
-            switch (this.color)
-            {
-                case Colors.White:
-                    colorCost = 10.00m;
-                    break;
-
-                case Colors.Red:
-                    colorCost = 20.00m;
-                    break;
-
-                case Colors.Green:
-                    colorCost = 40.00m;
-                    break;
-
-                case Colors.Blue:
-                    colorCost = 50.00m;
-                    break;
-
-                default:
-                    colorCost = 5.00m;
-                    break;
-            }
-
-            return colorCost;
-        }
+        /// <summary>
+        /// abstract method to return total cost. Implemented in child classes.
+        /// </summary>
+        public abstract void CalculateTotalCost();
     }
 }

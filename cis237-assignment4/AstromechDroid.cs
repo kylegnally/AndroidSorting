@@ -6,63 +6,79 @@ namespace cis237_assignment4
 {
     class AstromechDroid : UtilityDroid
     {
-        // Protected constant for the cost per ship. Children can access this too.
-        protected decimal COST_PER_SHIP = 45.00m;
+        // private variables for this specific droid type
+        private bool fireExtinguisher;
+        private int numberOfShips;
 
-        // Class level variables unique to this class. Set as protected so children classes can access them.
-        protected bool hasFireExtinguisher;
-        protected int numberOfShips;
+        // constants specific to this droid 
+        private const string NAME = "Astromech Droid";
+        private const decimal EXTINGUISHER_COST = 35.0m;
+        private const decimal SHIPS_COST = 50.0m;
 
-        // Constructor that uses the Base Constuctor to do most of the work.
-        public AstromechDroid(string Material, string Color,
-            bool HasToolbox, bool HasComputerConnection, bool HasArm, bool HasFireExtinquisher, int NumberOfShips) :
-            base(Material, Color, HasToolbox, HasComputerConnection, HasArm)
+        /// <summary>
+        /// Public property to override TotalCost property of parent class.
+        /// Remains zero until CalculateTotalCost is called.
+        /// </summary>
+        public override decimal TotalCost { get; set; }
+
+        /// <summary>
+        /// Constructor. Inherits material and color from the top of the
+        /// inheritance chain (the Droid class itself), inherits toolbox, computerconnection,
+        /// and arm from the UtilityDroid class, and adds fireExtinguisher and NumberOfShips
+        /// to this type of droid.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="toolBox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
+        /// <param name="fireExtinguisher"></param>
+        /// <param name="numberOfShips"></param>
+        public AstromechDroid(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm,
+            bool fireExtinguisher,
+            int numberOfShips) : base(
+            material,
+            color,
+            toolBox,
+            computerConnection,
+            arm)
         {
-            // Set the Droid Cost
-            MODEL_COST = 200.00m;
-            // Assign the values for the constructor that are not handled by the base constructor
-            this.hasFireExtinguisher = HasFireExtinquisher;
-            this.numberOfShips = NumberOfShips;
+            this.Name = NAME;
+            this.fireExtinguisher = fireExtinguisher;
+            this.numberOfShips = numberOfShips;
         }
 
-        // Overridden method to calculate the cost of options. Uses the base class to do some of the calculations
-        protected override decimal CalculateCostOfOptions()
-        {
-            decimal optionsCost = 0;
-
-            optionsCost += base.CalculateCostOfOptions();
-
-            if (hasFireExtinguisher)
-            {
-                optionsCost += COST_PER_OPTION;
-            }
-
-            return optionsCost;
-        }
-
-        // Protected virtual method that can be overriden in child classes.
-        // Caclulates the cost of ships.
-        protected virtual decimal CalculateCostOfShips()
-        {
-            return COST_PER_SHIP * numberOfShips;
-        }
-
-        // Overriden method to calculate the total cost. Uses work from the base class to achive the answer.
-        public override void CalculateTotalCost()
-        {
-            this.CalculateBaseCost();
-
-            this.totalCost = this.baseCost + MODEL_COST + this.CalculateCostOfOptions() + this.CalculateCostOfShips();
-        }
-
-        // Overriden ToString method to output the information for this droid. Uses work done in the base class
+        /// <summary>
+        /// ToString override method. Calls the base classes' ToString method
+        /// (including that of the grandparent Droid class) first,
+        /// then concatenates this child classes' properties onto that string.
+        /// </summary>
+        /// <returns>string</returns>
         public override string ToString()
         {
-            return
-                "Model: Astromech" + Environment.NewLine +
-                base.ToString() +
-                "Has Fire Extinguisher: " + this.hasFireExtinguisher + Environment.NewLine +
-                "Number Of Ships: " + this.numberOfShips + Environment.NewLine;
+            return base.ToString()
+                   + " "
+                   + " extinguisher: "
+                   + fireExtinguisher
+                   + " ships: "
+                   + numberOfShips;
+        }
+
+        /// <summary>
+        /// Calculates the total cost by adding the value in the BaseCost
+        /// property to the options this specific droid type has.
+        /// Sets the TotalCost property (which overrides that of its parent).
+        /// </summary>
+        public override void CalculateTotalCost()
+        {
+            if (fireExtinguisher) BaseCost += EXTINGUISHER_COST;
+            BaseCost += (numberOfShips * SHIPS_COST);
+            TotalCost = BaseCost;
         }
     }
 }

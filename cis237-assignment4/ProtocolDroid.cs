@@ -6,38 +6,56 @@ namespace cis237_assignment4
 {
     class ProtocolDroid : Droid
     {
-        // Constant for cost per language
-        protected const decimal COST_PER_LANGUAGE = 25.00m;
-        // Private variables unique to this class
-        protected int numberOfLanguages;
+        // variable specific to this class
+        private int numberOfLanguages;
 
-        // Constructor that takes in the standard parameters, and the number of languages it knows.
-        // The base constructor is called to do the work of assigning the standard parameters
-        public ProtocolDroid(string Material, string Color, int NumberOfLanguages) : base(Material, Color)
+        // constants specific to this class
+        private const decimal COST_PER_LANGUAGE = 15.00m;
+        private const string NAME = "Protocol Droid";
+
+        /// <summary>
+        /// Public property to override TotalCost property of parent class.
+        /// Remains zero until CalculateTotalCost is called.
+        /// </summary>
+        public override decimal TotalCost { get; set; }
+
+        /// <summary>
+        /// Constructor. Inherits material and color from the Droid parent class,
+        /// and adds numberoflanguages to this type of droid.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="numberOfLanguages"></param>
+        public ProtocolDroid(
+            string material,
+            string color,
+            int numberOfLanguages) : base(material, color)
         {
-            // Set the Droid Cost
-            MODEL_COST = 120.00m;
-            // Assign the values that the base constructor is not taking care of.
-            this.numberOfLanguages = NumberOfLanguages;
+            this.numberOfLanguages = numberOfLanguages;
+            this.Name = NAME;
         }
 
-        // Overriden abstract method from the droid class.
-        // It calculates the total cost using the baseCost method.
-        public override void CalculateTotalCost()
-        {
-            // Calculate the base cost
-            this.CalculateBaseCost();
-            // Calculate the total cost using the result of the base cost
-            this.totalCost = this.baseCost + MODEL_COST + (numberOfLanguages * COST_PER_LANGUAGE);
-        }
-
-        // Override the ToString method to use the base ToString, and append new information to it.
+        /// <summary>
+        /// ToString override method. Calls the base classes' ToString method,
+        /// then concatenates this child classes' properties onto that string.
+        /// </summary>
+        /// <returns>string</returns>
         public override string ToString()
         {
-            return
-                "Model: Protocol" + Environment.NewLine +
-                base.ToString() +
-                "Number Of Languages: " + this.numberOfLanguages + Environment.NewLine;
+            return base.ToString()
+                   + " "
+                   + " languages: "
+                   + numberOfLanguages;
+        }
+
+        /// <summary>
+        /// Calculates the total cost by adding the value in the BaseCost
+        /// property to the options this specific droid type has.
+        /// Sets the TotalCost property (which overrides that of its parent).
+        /// </summary>
+        public override void CalculateTotalCost()
+        {
+            TotalCost = BaseCost + (numberOfLanguages * COST_PER_LANGUAGE);
         }
     }
 }

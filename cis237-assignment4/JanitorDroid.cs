@@ -6,51 +6,78 @@ namespace cis237_assignment4
 {
     class JanitorDroid : UtilityDroid
     {
-        // Some protected variables that can be accessed in derived classes
-        protected bool hasTrashCompactor;
-        protected bool hasVacuum;
+        // variables specific to this class
+        private bool trashCompactor;
+        private bool vacuum;
+        private const string NAME = "Janitor Droid";
 
-        // Constuctor that takes lots of parameters to create the droid. The base constructor is used to do some of the work
-        public JanitorDroid(string Material, string Color,
-            bool HasToolbox, bool HasComputerConnection, bool HasArm, bool HasTrashCompactor, bool HasVacuum) :
-            base(Material, Color, HasToolbox, HasComputerConnection, HasArm)
+        // constants specific to this class
+        private const decimal TRASH_COST = 15.0m;
+        private const decimal VAC_COST = 15.0m;
+
+        /// <summary>
+        /// Public property to override TotalCost property of parent class.
+        /// Remains zero until CalculateTotalCost is called.
+        /// </summary>
+        public override decimal TotalCost { get; set; }
+
+        /// <summary>
+        /// Constructor. Inherits marterial, color, toolbox, computerConnection, and arm
+        /// from parent class and adds trashCompactor and vacuum to itself as additional
+        /// options.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="toolBox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
+        /// <param name="trashCompactor"></param>
+        /// <param name="vacuum"></param>
+        public JanitorDroid(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm,
+            bool trashCompactor,
+            bool vacuum) : base(
+                material,
+                color,
+                toolBox,
+                computerConnection,
+                arm)
         {
-            // Set the Droid Cost
-            MODEL_COST = 160.00m;
-            // Assign the values that the base constructor is not taking care of.
-            this.hasTrashCompactor = HasTrashCompactor;
-            this.hasVacuum = HasVacuum;
+            this.Name = NAME;
+            this.trashCompactor = trashCompactor;
+            this.vacuum = vacuum;
         }
 
-        // Override the CalculateCostOfOptions method.
-        // Use the base class implementation of the method, and tack on the cost of the new options
-        protected override decimal CalculateCostOfOptions()
-        {
-            decimal optionsCost = 0;
-
-            optionsCost += base.CalculateCostOfOptions();
-
-            if (hasTrashCompactor)
-            {
-                optionsCost += COST_PER_OPTION;
-            }
-
-            if (hasVacuum)
-            {
-                optionsCost += COST_PER_OPTION;
-            }
-
-            return optionsCost;
-        }
-
-        // Overridden ToString that uses the base ToString method, and appends the missing information.
+        /// <summary>
+        /// ToString override method. Calls the base classes' ToString method
+        /// (including that of its grandparent Droid class) and then concatenates
+        /// this child classes' properties onto that string.
+        /// </summary>
+        /// <returns>string</returns>
         public override string ToString()
         {
-            return
-                "Model: Janitor" + Environment.NewLine +
-                base.ToString() +
-                "Has Trash Compactor: " + this.hasTrashCompactor + Environment.NewLine +
-                "Has Vacuum: " + this.hasVacuum + Environment.NewLine;
+            return base.ToString()
+                   + " "
+                   + " compactor: "
+                   + trashCompactor
+                   + " vacuum: "
+                   + vacuum;
+        }
+
+        /// <summary>
+        /// Calculates the total cost by adding the value in the BaseCost
+        /// property to the options this specific droid type has.
+        /// Sets the TotalCost property (which overrides that of its parent).
+        /// </summary>
+        public override void CalculateTotalCost()
+        {
+            if (trashCompactor) BaseCost += TRASH_COST;
+            if (vacuum) BaseCost += VAC_COST;
+            TotalCost = BaseCost;
         }
     }
 }

@@ -6,70 +6,84 @@ namespace cis237_assignment4
 {
     class UtilityDroid : Droid
     {
-        // A constant that can be used in this class or any child classes
-        protected const decimal COST_PER_OPTION = 35.00m;
+        // private variables for this specific droid type
+        private bool toolBox;
+        private bool computerConnection;
+        private bool arm;
 
-        // Class level variables that can be used in this class, or any children of this class
-        protected bool hasToolbox;
-        protected bool hasComputerConnection;
-        protected bool hasArm;
+        // constants specific to this droid
+        private const decimal TOOLBOX_COST = 15.0m;
+        private const decimal COMPUTER_CONNECTION_COST = 20.0m;
+        private const decimal ARM_COST = 10.0m;
+        private const string NAME = "Utility Droid";
 
-        // Constructor that takes the standard parameters, and ones specific to this droid.
-        // Calls the base constructor to do some of the work already written in the droid class.
-        public UtilityDroid(string Material, string Color, bool HasToolbox, bool HasComputerConnection, bool HasArm) :
-            base(Material, Color)
+        /// <summary>
+        /// Public property to override TotalCost property of parent class.
+        /// Remains zero until CalculateTotalCost is called.
+        /// </summary>
+        public override decimal TotalCost { get; set; }
+
+        /// <summary>
+        /// constructor. Inherits material and color from Droid class,
+        /// but sets the toolbox, computerconnection, and arm bools
+        /// from inside this class. Also sets the droid type's name.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="toolBox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
+        public UtilityDroid(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm) : base(material, color)
         {
-            // Set the Droid Cost
-            MODEL_COST = 130.00m;
-            // Assign the values that the base constructor is not taking care of.
-            this.hasToolbox = HasToolbox;
-            this.hasComputerConnection = HasComputerConnection;
-            this.hasArm = HasArm;
+            this.toolBox = toolBox;
+            this.computerConnection = computerConnection;
+            this.arm = arm;
+            this.Name = NAME;
+
+            CalculateSubtotal();
         }
 
-        // Virtual method to calculate the cost of the options. This method can be overridden in child classes
-        // to calculate the cost of options
-        protected virtual decimal CalculateCostOfOptions()
-        {
-            decimal optionsCost = 0;
-
-            if (hasToolbox)
-            {
-                optionsCost += COST_PER_OPTION;
-            }
-
-            if (hasComputerConnection)
-            {
-                optionsCost += COST_PER_OPTION;
-            }
-
-            if (hasArm)
-            {
-                optionsCost += COST_PER_OPTION;
-            }
-
-            return optionsCost;
-        }
-
-        // Overridden method to calculate the total cost. This method uses the base cost from the parent droid class,
-        // and the cost of the options of this class to create the total cost.
-        public override void CalculateTotalCost()
-        {
-            this.CalculateBaseCost();
-
-            this.totalCost = this.baseCost + MODEL_COST + this.CalculateCostOfOptions();
-        }
-
-        // Overridden ToString method to output the information for this droid.
-        // uses the base ToString method and appends more information to it.
+        /// <summary>
+        /// ToString override method. Calls the base classes' ToString method first,
+        /// then concatenates this child classes' properties onto that string.
+        /// </summary>
+        /// <returns>string</returns>
         public override string ToString()
         {
-            return
-                "Model: Utility" + Environment.NewLine +
-                base.ToString() +
-                "Has Tool Box: " + this.hasToolbox + Environment.NewLine +
-                "Has Computer Connection: " + this.hasComputerConnection + Environment.NewLine +
-                "Has Arm: " + this.hasArm + Environment.NewLine;
+            return base.ToString()
+                   + " "
+                   + " toolbox: "
+                   + toolBox
+                   + " comp cnxn: "
+                   + computerConnection
+                   + " arm: "
+                   + arm;
+        }
+
+        /// <summary>
+        /// Calculates a running subtotal which includes the inherited base cost of
+        /// a droid plus this particular droid's options.
+        /// </summary>
+        private void CalculateSubtotal()
+        {
+            if (this.toolBox) BaseCost += TOOLBOX_COST;
+            if (this.computerConnection) BaseCost += COMPUTER_CONNECTION_COST;
+            if (this.arm) BaseCost += ARM_COST;
+        }
+
+        /// <summary>
+        /// Calculates the total cost by adding the value in the BaseCost
+        /// property to the options this specific droid type has.
+        /// Sets the TotalCost property (which overrides that of its parent).
+        /// </summary>
+        public override void CalculateTotalCost()
+        {
+            TotalCost = BaseCost;
         }
     }
 }

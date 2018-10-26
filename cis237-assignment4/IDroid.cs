@@ -2,6 +2,11 @@
 
 namespace cis237_assignment4
 {
+    /// <summary>
+    /// Interface used for creation of a Droid. Enforces inclusion of
+    /// CalculateTotalCost() as a void as well as inclusion of a TotalCost
+    /// property.
+    /// </summary>
     interface IDroid
     {
         // Method to calculate the total cost of a droid
