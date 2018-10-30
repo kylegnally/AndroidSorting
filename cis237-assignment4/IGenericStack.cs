@@ -8,10 +8,10 @@ namespace cis237_assignment4
 {
     interface IGenericStack
     {
-        void Push(Droid droid);
-        void Pop();
+        void Enqueue(Droid droid);
+        void Dequeue();
 
-        bool isEmpty;
-        int size;
+        bool isEmpty { get; }
+        int size { get; }
     }
 }

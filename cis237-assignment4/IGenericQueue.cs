@@ -8,5 +8,6 @@ namespace cis237_assignment4
 {
     interface IGenericQueue
     {
+        // enqueue and dequeue
     }
 }
