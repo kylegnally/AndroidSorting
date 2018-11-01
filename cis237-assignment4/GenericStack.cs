@@ -15,7 +15,6 @@ namespace cis237_assignment4
         }
 
         protected Node head;
-        protected Node tail;
         protected int size = 0;
 
         public bool isEmpty
@@ -37,11 +36,6 @@ namespace cis237_assignment4
             head.Next = oldHead;
             size++;
 
-            if (size == 1)
-            {
-                tail = head;
-            }
-
         }
 
         // this should be the same as RemoveFromFront in the class example
@@ -55,11 +49,7 @@ namespace cis237_assignment4
             T returnData = head.Data;
             head = head.Next;
             size--;
-            if (isEmpty)
-            {
-                tail = null;
-            }
-
+            
             return returnData;
         }
     }
