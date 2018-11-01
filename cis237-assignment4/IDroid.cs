@@ -7,7 +7,7 @@ namespace cis237_assignment4
     /// CalculateTotalCost() as a void as well as inclusion of a TotalCost
     /// property.
     /// </summary>
-    interface IDroid
+    interface IDroid : IComparable
     {
         // Method to calculate the total cost of a droid
         void CalculateTotalCost();

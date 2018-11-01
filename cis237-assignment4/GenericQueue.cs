@@ -8,5 +8,7 @@ namespace cis237_assignment4
 {
     class GenericQueue
     {
+        void Enqueue(Droid droid);
+        void Dequeue(Droid droid);
     }
 }

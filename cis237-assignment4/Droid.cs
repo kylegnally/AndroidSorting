@@ -49,6 +49,11 @@ namespace cis237_assignment4
             if (this.Color == "White") BaseCost += COLOR_WHITE_COST;
         }
 
+        public int CompareTo(object droid)
+        {
+            return this;
+        }
+
         /// <summary>
         /// returns the basic droid information when called from any child class.
         /// </summary>

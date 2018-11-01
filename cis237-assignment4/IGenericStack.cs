@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace cis237_assignment4
 {
-    interface IGenericStack
+    interface IGenericStack<T>
     {
-        void Enqueue(Droid droid);
-        void Dequeue();
+        void Push(T Data);
+        T Pop();
 
         bool isEmpty { get; }
-        int size { get; }
+        int Size { get; }
     }
 }
