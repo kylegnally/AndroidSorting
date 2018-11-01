@@ -168,5 +168,10 @@ namespace cis237_assignment4
 
             return allDroids;
         }
+
+        public void CategorizeByModel(Droid[] droids)
+        {
+
+        }
     }
 }

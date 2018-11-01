@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace cis237_assignment4
 {
-    interface IGenericQueue
+    interface IGenericQueue<T>
     {
-        // enqueue and dequeue
+        void Enqueue(T Data);
+        T Dequeue();
+
+        bool IsEmpty { get; }
+        int Size { get; }
     }
 }
