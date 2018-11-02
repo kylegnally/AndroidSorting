@@ -65,6 +65,7 @@ namespace cis237_assignment4
                     case "C":
                         collection.AddToStacks();
                         collection.StacksToQueue();
+                        collection.QueueToArray();
                         Console.WriteLine(aMenu.DroidsSorted());
                         aMenu.Pause();
                         DisplayMainMenu();

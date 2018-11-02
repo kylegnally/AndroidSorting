@@ -210,12 +210,16 @@ namespace cis237_assignment4
                 droidQueue.Enqueue(pDroidStack.Pop());
             }
 
-            return;
+            //return;
         }
 
         public void QueueToArray()
         {
-
+            Droid[] newDroidArray = new Droid[100];
+            for (int i = 0; i < droids.Length; i++)
+            {
+                droidQueue.Dequeue();
+            }
         }
     }
 }
