@@ -49,9 +49,16 @@ namespace cis237_assignment4
             if (this.Color == "White") BaseCost += COLOR_WHITE_COST;
         }
 
+        // Called by the MergeSort class. Compares two droids' TotalCost properties
+        // and returns -1, 0, or 1 (less than, equal to, or greater than) for this.TotalCost
         public int CompareTo(object droid)
         {
-            return this;
+            if (droid == null) return 1;
+
+            if (droid is Droid otherDroid)
+                return this.TotalCost.CompareTo(otherDroid.TotalCost);
+            else
+                throw new ArgumentException("Object is not a Temperature");
         }
 
         /// <summary>
