@@ -7,7 +7,7 @@ namespace cis237_assignment4
     class DroidCollection : IDroidCollection
     {
         // variables used by the collection
-        Droid[] droids;
+        IDroid[] droids;
         int collectionPosition;
 
         GenericStack<IDroid> aDroidStack = new GenericStack<IDroid>();
@@ -215,10 +215,13 @@ namespace cis237_assignment4
 
         public void QueueToArray()
         {
-            Droid[] newDroidArray = new Droid[100];
-            for (int i = 0; i < droids.Length; i++)
+            //IDroid[] newDroidArray = new IDroid[100];
+            int i = 0;
+            while (droidQueue.Size != 0)
             {
-                droidQueue.Dequeue();
+                IDroid droid = droidQueue.Dequeue();
+                droids[i] = droid;
+                i++;
             }
         }
     }
