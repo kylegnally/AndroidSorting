@@ -63,7 +63,8 @@ namespace cis237_assignment4
                         break;
 
                     case "C":
-                        collection.CategorizeByModel();
+                        collection.AddToStacks();
+                        collection.StacksToQueue();
                         Console.WriteLine(aMenu.DroidsSorted());
                         aMenu.Pause();
                         DisplayMainMenu();

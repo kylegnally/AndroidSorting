@@ -10,6 +10,12 @@ namespace cis237_assignment4
         Droid[] droids;
         int collectionPosition;
 
+        GenericStack<IDroid> aDroidStack = new GenericStack<IDroid>();
+        GenericStack<IDroid> jDroidStack = new GenericStack<IDroid>();
+        GenericStack<IDroid> uDroidStack = new GenericStack<IDroid>();
+        GenericStack<IDroid> pDroidStack = new GenericStack<IDroid>();
+        GenericQueue<IDroid> droidQueue = new GenericQueue<IDroid>();
+
         /// <summary>
         /// DroidCollection constructor. Creates a new array of type Droid
         /// and sets the collectionPosition to 0.  
@@ -170,14 +176,8 @@ namespace cis237_assignment4
         }
 
         // required modified bucket sort method
-        public void CategorizeByModel()
+        public void AddToStacks()
         {
-            GenericStack<IDroid> aDroidStack = new GenericStack<IDroid>();
-            GenericStack<IDroid> jDroidStack = new GenericStack<IDroid>();
-            GenericStack<IDroid> uDroidStack = new GenericStack<IDroid>();
-            GenericStack<IDroid> pDroidStack = new GenericStack<IDroid>();
-
-            GenericQueue<IDroid> droidQueue = new GenericQueue<IDroid>();
 
             foreach (Droid droid in droids)
             {
@@ -189,6 +189,33 @@ namespace cis237_assignment4
                     else pDroidStack.Push(droid);
                 }
             }
+        }
+
+        public void StacksToQueue()
+        {
+            for (int i = 0; i < aDroidStack.Size + 1; i++)
+            {
+                droidQueue.Enqueue(aDroidStack.Pop());
+            }
+            for (int i = 0; i < jDroidStack.Size + 1; i++)
+            {
+                droidQueue.Enqueue(jDroidStack.Pop());
+            }
+            for (int i = 0; i < uDroidStack.Size + 1; i++)
+            {
+                droidQueue.Enqueue(uDroidStack.Pop());
+            }
+            for (int i = 0; i < pDroidStack.Size + 1; i++)
+            {
+                droidQueue.Enqueue(pDroidStack.Pop());
+            }
+
+            return;
+        }
+
+        public void QueueToArray()
+        {
+
         }
     }
 }
