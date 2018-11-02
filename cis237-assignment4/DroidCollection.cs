@@ -10,10 +10,13 @@ namespace cis237_assignment4
         IDroid[] droids;
         int collectionPosition;
 
+        // Generic stacks - we're using type IDroid
         GenericStack<IDroid> aDroidStack = new GenericStack<IDroid>();
         GenericStack<IDroid> jDroidStack = new GenericStack<IDroid>();
         GenericStack<IDroid> uDroidStack = new GenericStack<IDroid>();
         GenericStack<IDroid> pDroidStack = new GenericStack<IDroid>();
+
+        // generic queue - type IDroid
         GenericQueue<IDroid> droidQueue = new GenericQueue<IDroid>();
 
         /// <summary>
@@ -191,32 +194,37 @@ namespace cis237_assignment4
             }
         }
 
+        // send each the stacks into a queue in the required order
         public void StacksToQueue()
         {
             for (int i = 0; i < aDroidStack.Size + 1; i++)
             {
                 droidQueue.Enqueue(aDroidStack.Pop());
             }
+
             for (int i = 0; i < jDroidStack.Size + 1; i++)
             {
                 droidQueue.Enqueue(jDroidStack.Pop());
             }
+
             for (int i = 0; i < uDroidStack.Size + 1; i++)
             {
                 droidQueue.Enqueue(uDroidStack.Pop());
             }
+
             for (int i = 0; i < pDroidStack.Size + 1; i++)
             {
                 droidQueue.Enqueue(pDroidStack.Pop());
             }
-
-            //return;
         }
 
+        // send the queue into the original array, overwriting its contents
         public void QueueToArray()
         {
-            //IDroid[] newDroidArray = new IDroid[100];
             int i = 0;
+
+            // a for loop can't work here because the counter increments while the queue counter decrements,
+            // so to get all the droids we just keep track of the queue size and stop when we get cake
             while (droidQueue.Size != 0)
             {
                 IDroid droid = droidQueue.Dequeue();
