@@ -178,6 +178,13 @@ namespace cis237_assignment4
             return allDroids;
         }
 
+        public void CategorizeByModel()
+        {
+            AddToStacks();
+            StacksToQueue();
+            QueueToArray();
+        }
+
         // required modified bucket sort method
         public void AddToStacks()
         {
@@ -189,7 +196,7 @@ namespace cis237_assignment4
                     if (droid is AstromechDroid) aDroidStack.Push(droid);
                     else if (droid is JanitorDroid) jDroidStack.Push(droid);
                     else if (droid is UtilityDroid) uDroidStack.Push(droid);
-                    else pDroidStack.Push(droid);
+                    else if (droid is ProtocolDroid) pDroidStack.Push(droid);
                 }
             }
         }
