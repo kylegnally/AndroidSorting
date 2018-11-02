@@ -24,7 +24,7 @@ namespace cis237_assignment4
             {
                 Console.Clear();
                 Console.Write(aMenu.MainMenu());
-                Console.Write("\n\n\t\t\t\t\t");
+                Console.Write("\n\n\t\t\t");
                 menuChoice = Console.ReadLine();
                 HandleMainMenuInput(menuChoice);
             }
@@ -35,7 +35,7 @@ namespace cis237_assignment4
                 Console.Clear();
                 Console.ResetColor();
                 Console.Write(aMenu.DroidSelection());
-                Console.Write("\n\n\t\t\t\t\t");
+                Console.Write("\n\n\t\t\t");
                 string droidType = Console.ReadLine().ToUpper();
                 HandleDroidMenuInput(droidType);
             }
@@ -46,19 +46,27 @@ namespace cis237_assignment4
                 userSelection = userSelection.ToUpper();
                 switch (userSelection)
                 {
+                    case "A":
+                        DisplayDroidMenu();
+                        break;
+                    case "T":
+                        AddTestData();
+                        break;
 
                     case "P":
                         Console.Write(aMenu.PrintListMessage());
                         string[] allDroids = collection.PrintTheDroidsInventory();
                         //aMenu.PrintDroidList(allDroids);
                         aMenu.Pause();
-
-                        // be sure to add a prompt for user interaction with printed list
+                        aMenu.WaitForUser();
                         DisplayMainMenu();
                         break;
 
-                    case "A":
-                        DisplayDroidMenu();
+                    case "C":
+                        collection.CategorizeByModel();
+                        Console.WriteLine(aMenu.DroidsSorted());
+                        aMenu.Pause();
+                        DisplayMainMenu();
                         break;
 
                     case "Q":
@@ -73,6 +81,28 @@ namespace cis237_assignment4
                         DisplayMainMenu();
                         break;
                 }
+            }
+
+            void AddTestData()
+            {
+                // protocol
+                collection.Add("Polyskin", "Red", 6);
+                collection.Add("Metaskin", "Black", 23);
+
+                // astromech
+                collection.Add("Polyskin", "White", false, false, true, true, 12);
+                collection.Add("Polyskin", "White", false, true, false, true, 24);
+
+                // janitor
+                collection.Add("Ceraskin", "Red", false, true, false, true, false);
+                collection.Add("Ceraskin", "Red", true, false, true, false, true);
+
+                // utility
+                collection.Add("Metaskin", "Red", false, true, false);
+                collection.Add("Metaskin", "Red", true, false, true);
+                Console.WriteLine(aMenu.TestDataAdded());
+                aMenu.Pause();
+                DisplayMainMenu();
             }
 
             // droid menu input handler

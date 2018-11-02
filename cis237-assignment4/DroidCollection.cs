@@ -169,9 +169,26 @@ namespace cis237_assignment4
             return allDroids;
         }
 
-        public void CategorizeByModel(Droid[] droids)
+        // required modified bucket sort method
+        public void CategorizeByModel()
         {
+            GenericStack<IDroid> aDroidStack = new GenericStack<IDroid>();
+            GenericStack<IDroid> jDroidStack = new GenericStack<IDroid>();
+            GenericStack<IDroid> uDroidStack = new GenericStack<IDroid>();
+            GenericStack<IDroid> pDroidStack = new GenericStack<IDroid>();
 
+            GenericQueue<IDroid> droidQueue = new GenericQueue<IDroid>();
+
+            foreach (Droid droid in droids)
+            {
+                if (droid != null)
+                {
+                    if (droid is AstromechDroid) aDroidStack.Push(droid);
+                    else if (droid is JanitorDroid) jDroidStack.Push(droid);
+                    else if (droid is UtilityDroid) uDroidStack.Push(droid);
+                    else pDroidStack.Push(droid);
+                }
+            }
         }
     }
 }

@@ -17,11 +17,13 @@ namespace cis237_assignment4
         public string MainMenu()
         {
             Console.ResetColor();
-            menuString = "\n\n\n\n\n\t\t\t\t\tWelcome to LookSir Droids!\n\n" +
-                "\t\t\t\t\tPlease select an option: \n\n" +
-                "\t\t\t\t\t(A) Add a droid to the list\n" +
-                "\t\t\t\t\t(P) Print the list of droids currently in inventory\n" +
-                "\t\t\t\t\t(Q) Quit\n\n";
+            menuString = "\n\n\n\n\n\t\t\tWelcome to LookSir Droids!\n\n" +
+                "\t\t\tPlease select an option: \n\n" +
+                "\t\t\t(A) Add a droid to the list\n" +
+                "\t\t\t(T) Add some test data to the list\n" +
+                "\t\t\t(P) Print the list of droids currently in inventory\n" +
+                "\t\t\t(C) Categorize the list of droids in this order: Astromech, Utility, Janitor, Protocol\n" +
+                "\t\t\t(Q) Quit\n\n";
             return menuString;
         }
 
@@ -32,7 +34,7 @@ namespace cis237_assignment4
         public string DroidSelection()
         {
             Console.ResetColor();
-            menuString = ("\n\n\n\n\n\t\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
+            menuString = ("\n\n\n\n\n\t\t\t--- SELECT A DROID TYPE ---\n\n" +
                           "\t\t\t\t\t--- BASE UNIT COST (ALL DROIDS): $20 ---\n\n" +
                           "\t\t\t\t\t(P) Protocol Droid \n" +
                           "\t\t\t\t\t(U) Utility Droid\n" +
@@ -49,7 +51,7 @@ namespace cis237_assignment4
         public string MaterialSelection()
         {
             Console.ResetColor();
-            menuString = "\n\n\n\n\n\t\t\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
+            menuString = "\n\n\n\n\n\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
                          "\t\t\t\t\t(P) Polyskin ($15)\n" +
                          "\t\t\t\t\t(M) Metaskin ($25)\n" +
                          "\t\t\t\t\t(C) Ceraskin ($50)\n";
@@ -64,7 +66,7 @@ namespace cis237_assignment4
         {
             Console.Clear();
             Console.ResetColor();
-            menuString = "\n\n\n\n\n\t\t\t\t\t--- SELECT A COLOR ---\n\n" +
+            menuString = "\n\n\n\n\n\t\t\t--- SELECT A COLOR ---\n\n" +
                          "\t\t\t\t\t(B) Black ($10)\n" +
                          "\t\t\t\t\t(R) Red ($15)\n" +
                          "\t\t\t\t\t(W) White ($20)\n";
@@ -81,7 +83,7 @@ namespace cis237_assignment4
         public string PrintListMessage()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string printListMessage = "\n\n\t\t\t\t\t--- DROID INVENTORY ---\n\n";
+            string printListMessage = "\n\n\t\t\t--- DROID INVENTORY ---\n\n";
             return printListMessage;
         }
 
@@ -104,7 +106,7 @@ namespace cis237_assignment4
         public string QuitProgramMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string searchListMessage = "\n\n\t\t\t\t\tExiting program.";
+            string searchListMessage = "\n\n\t\t\tExiting program.";
             return searchListMessage;
         }
 
@@ -115,7 +117,7 @@ namespace cis237_assignment4
         public string InvalidOptionMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string invalidOption = "\n\n\t\t\t\t\tInvalid option. Please select a valid option from the menu.";
+            string invalidOption = "\n\n\t\t\tInvalid option. Please select a valid option from the menu.";
             return invalidOption;
         }
 
@@ -126,8 +128,39 @@ namespace cis237_assignment4
         public string DroidAdded()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string droidAdded = "\n\n\t\t\t\t\tNew droid added.";
+            string droidAdded = "\n\n\t\t\tNew droid added.";
             return droidAdded;
+        }
+
+        /// <summary>
+        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// </summary>
+        /// <returns>string</returns>
+        public string DroidsSorted()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            string droidsSorted = "\n\n\t\t\tDroids sorted.";
+            return droidsSorted;
+        }
+
+        /// <summary>
+        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// </summary>
+        /// <returns>string</returns>
+        public string TestDataAdded()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            string testDataAdded = "\n\n\t\t\tTest droid data added.";
+            return testDataAdded;
+        }
+
+        public void WaitForUser()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            
+            Console.Write("\n\n\t\t\tPress any key to continue.");
+            Console.ReadKey(true);
+
         }
 
         /// <summary>
@@ -137,8 +170,8 @@ namespace cis237_assignment4
         public string InvalidInformation()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string invalidOption = "\n\n\t\t\t\t\tIt seems you've entered some incorrect information.";
-            invalidOption += "\n\n\t\t\t\t\tDROID NOT ADDED.";
+            string invalidOption = "\n\n\t\t\tIt seems you've entered some incorrect information.";
+            invalidOption += "\n\n\t\t\tDROID NOT ADDED.";
             invalidOption += "\n\t\t\t\t\tPlease Re-enter this droid's information.";
             return invalidOption;
         }
@@ -209,7 +242,7 @@ namespace cis237_assignment4
         private string ChooseDroidLanguages()
         {
             Console.ResetColor();
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("How many languages ($15 each) would you like to support? ");
             string languages = Console.ReadLine();
             int number;
@@ -225,7 +258,7 @@ namespace cis237_assignment4
         {
             Console.Clear();
             Console.Write(MaterialSelection());
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             string material = DetermineMaterial();
             return material;
         }
@@ -238,7 +271,7 @@ namespace cis237_assignment4
         {
             Console.Clear();
             Console.Write(ColorSelection());
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             string color = DetermineColor();
             return color;
         }
@@ -249,7 +282,7 @@ namespace cis237_assignment4
         /// <returns>string</returns>
         private string ChooseToolboxOption()
         {
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("Would you like to add a toolbox ($15) to this model (Y/N)? ");
             string toolboxChoice = Console.ReadLine().ToUpper();
             switch (toolboxChoice)
@@ -274,7 +307,7 @@ namespace cis237_assignment4
         /// <returns>string</returns>
         private string ChooseArmOption()
         {
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("Would you like to add a utility arm ($10) to this model (Y/N)? ");
             string arm = Console.ReadLine().ToUpper();
             switch (arm)
@@ -299,7 +332,7 @@ namespace cis237_assignment4
         /// <returns>string</returns>
         private string ChooseComputerConnectionOption()
         {
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("Would you like to add a computer connection ($20) to this model (Y/N)? ");
             string compcnxn = Console.ReadLine().ToUpper();
             switch (compcnxn)
@@ -324,7 +357,7 @@ namespace cis237_assignment4
         /// <returns>string[]</returns>
         private string[] ChooseJanitorDroidSpecifics()
         {
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("Would you like to add a trash compactor ($15) to this model (Y/N)? ");
             string compactorChoice = Console.ReadLine().ToUpper();
             switch (compactorChoice)
@@ -340,7 +373,7 @@ namespace cis237_assignment4
                     break;
             }
 
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("Would you like to add a vacuum to this model (Y/N)? ");
             string vacuumChoice = Console.ReadLine().ToUpper();
             switch (vacuumChoice)
@@ -365,7 +398,7 @@ namespace cis237_assignment4
         /// <returns>string[]</returns>
         private string[] ChooseAstromechDroidSpecifics()
         {
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("Would you like to add a fire extinguisher ($35) to this model (Y/N)? ");
             string extinguisherChoice = Console.ReadLine().ToUpper();
             switch (extinguisherChoice)
@@ -381,7 +414,7 @@ namespace cis237_assignment4
                     break;
             }
 
-            Console.Write("\n\n\t\t\t\t\t");
+            Console.Write("\n\n\t\t\t");
             Console.Write("How many ships would you like to support? ");
             string ships = Console.ReadLine();
             int number;
