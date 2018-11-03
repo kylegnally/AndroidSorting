@@ -1,4 +1,23 @@
-﻿using System;
+﻿
+
+
+
+/**
+ *  The {@code Merge} class provides static methods for sorting an
+ *  array using mergesort.
+ *  <p>
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *  For an optimized version, see {@link MergeX}.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ *
+ *
+ *  Modified for this purpose by Kyle Nally
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,7 +32,6 @@ namespace cis237_assignment4
         private MergeSort() { }
 
         private IDroid[] Droids;
-
         private IDroid[] aux;
         /**
          * Reads in a sequence of strings from standard input; mergesorts them; 
@@ -25,7 +43,6 @@ namespace cis237_assignment4
         {
             Droids = droids;
             MergeSort.sort(Droids);
-            //show(Droids);
         }
 
         // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
@@ -138,24 +155,6 @@ namespace cis237_assignment4
             }
         }
 
-        ///**
-        // * Returns a permutation that gives the elements in the array in ascending order.
-        // * @param a the array
-        // * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
-        // *    ..., {@code a[p[N-1]]} are in ascending order
-        // */
-        //public static int[] indexSort(IComparable[] a)
-        //{
-        //    int n = a.Length;
-        //    int[] index = new int[n];
-        //    for (int i = 0; i < n; i++)
-        //        index[i] = i;
-
-        //    int[] aux = new int[n];
-        //    sort(a, index, aux, 0, n - 1);
-        //    return index;
-        //}
-
         // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
         private static void sort(IDroid[] a, int[] index, int[] aux, int lo, int hi)
         {
@@ -165,14 +164,5 @@ namespace cis237_assignment4
             sort(a, index, aux, mid + 1, hi);
             merge(a, index, aux, lo, mid, hi);
         }
-
-        ////print array to standard output
-        //private static void show(IDroid[] a)
-        //{
-        //    for (int i = 0; i < a.Length; i++)
-        //    {
-        //        Console.WriteLine(a[i]);
-        //    }
-        //}
     }
 }

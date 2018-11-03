@@ -123,7 +123,7 @@ namespace cis237_assignment4
         }
 
         /// <summary>
-        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// If called, informs the user that the droid has been successfully added to the collection. Returns a string.
         /// </summary>
         /// <returns>string</returns>
         public string DroidAdded()
@@ -134,7 +134,7 @@ namespace cis237_assignment4
         }
 
         /// <summary>
-        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// If called, informs the user that the droids have been sorted by category. Returns a string.
         /// </summary>
         /// <returns>string</returns>
         public string DroidsSortedByCategory()
@@ -145,7 +145,7 @@ namespace cis237_assignment4
         }
 
         /// <summary>
-        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// If called, informs the user that the droids have been sorted by cost. Returns a string.
         /// </summary>
         /// <returns>string</returns>
         public string DroidsSortedByTotalCost()
@@ -156,7 +156,7 @@ namespace cis237_assignment4
         }
 
         /// <summary>
-        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// If called, informs the user that test data has been successfully added to the collection. Returns a string.
         /// </summary>
         /// <returns>string</returns>
         public string TestDataAdded()
@@ -166,13 +166,14 @@ namespace cis237_assignment4
             return testDataAdded;
         }
 
+        /// <summary>
+        /// If called, instructs the user to press a key to continue and waits for input.
+        /// </summary>
         public void WaitForUser()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            
             Console.Write("\n\n\t\t\tPress any key to continue.");
             Console.ReadKey(true);
-
         }
 
         /// <summary>

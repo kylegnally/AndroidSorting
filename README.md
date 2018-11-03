@@ -3,7 +3,7 @@
 ## Due: 11-06-2018
 
 ## Author
-
+Kyle Nally
 
 
 ## Description
@@ -93,10 +93,14 @@ Be sure to think about what the time complexity for the bucket sort will be. Thi
 
 ## Outside Resources Used
 
+Sedgewick, R., & Wayne, K. (2018, July 7). Abstract in-place merge. Retrieved November 3, 2018, from https://algs4.cs.princeton.edu/22mergesort/
+
+Outside code used in MergeSort class modified from:
+https://algs4.cs.princeton.edu/22mergesort/Merge.java.html
 
 
 ## Known Problems, Issues, And/Or Errors in the Program
-
+None.
 
 
 ## Assignment 3 Description for reference
