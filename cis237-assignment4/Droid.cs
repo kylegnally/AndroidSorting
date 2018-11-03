@@ -58,7 +58,7 @@ namespace cis237_assignment4
             if (droid is Droid otherDroid)
                 return this.TotalCost.CompareTo(otherDroid.TotalCost);
             else
-                throw new ArgumentException("Object is not a Temperature");
+                throw new ArgumentException("Object is not a TotalCost");
         }
 
         /// <summary>

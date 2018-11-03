@@ -25,7 +25,7 @@ namespace cis237_assignment4
         /// </summary>
         public DroidCollection()
         {
-            droids = new Droid[100];
+            droids = new Droid[6];
             collectionPosition = 0;
         }
 
@@ -185,6 +185,11 @@ namespace cis237_assignment4
             AddToStacks();
             StacksToQueue();
             QueueToArray();
+        }
+
+        public void MergeSortByTotalCost()
+        {
+            MergeSort mergeSort = new MergeSort(this.droids);
         }
 
         // required modified bucket sort method

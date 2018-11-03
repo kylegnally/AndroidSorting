@@ -23,6 +23,7 @@ namespace cis237_assignment4
                 "\t\t\t(T) Add some test data to the list\n" +
                 "\t\t\t(P) Print the list of droids currently in inventory\n" +
                 "\t\t\t(C) Categorize the list of droids in this order: Astromech, Utility, Janitor, Protocol\n" +
+                "\t\t\t(M) Merge sort by Total Cost" +
                 "\t\t\t(Q) Quit\n\n";
             return menuString;
         }
@@ -136,11 +137,22 @@ namespace cis237_assignment4
         /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
         /// </summary>
         /// <returns>string</returns>
-        public string DroidsSorted()
+        public string DroidsSortedByCategory()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string droidsSorted = "\n\n\t\t\tDroids sorted.";
-            return droidsSorted;
+            string droidsSortedByCategory = "\n\n\t\t\tDroids sorted by category.";
+            return droidsSortedByCategory;
+        }
+
+        /// <summary>
+        /// If called, informs the user that the beverage they have chosen to add has been successfully added to the collection. Returns a string.
+        /// </summary>
+        /// <returns>string</returns>
+        public string DroidsSortedByTotalCost()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            string droidsSortedByTotalCost = "\n\n\t\t\tDroids sorted by category.";
+            return droidsSortedByTotalCost;
         }
 
         /// <summary>
