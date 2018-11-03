@@ -38,7 +38,7 @@ namespace cis237_assignment4
                 Console.Clear();
                 Console.ResetColor();
                 Console.Write(aMenu.DroidSelection());
-                Console.Write("\n\n\t\t\t");
+                Console.Write("\n\n\t\t\t\t\t");
                 string droidType = Console.ReadLine().ToUpper();
                 HandleDroidMenuInput(droidType);
             }

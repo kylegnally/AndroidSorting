@@ -113,7 +113,7 @@ namespace cis237_assignment4
         public string QuitProgramMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string searchListMessage = "\n\n\t\t\tExiting program.";
+            string searchListMessage = "\n\n\t\t\t\t\tExiting program.";
             return searchListMessage;
         }
 
@@ -135,7 +135,7 @@ namespace cis237_assignment4
         public string DroidAdded()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string droidAdded = "\n\n\t\t\tNew droid added.";
+            string droidAdded = "\n\n\t\t\t\t\tNew droid added.";
             return droidAdded;
         }
 
@@ -261,7 +261,7 @@ namespace cis237_assignment4
         private string ChooseDroidLanguages()
         {
             Console.ResetColor();
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("How many languages ($15 each) would you like to support? ");
             string languages = Console.ReadLine();
             int number;
@@ -277,7 +277,7 @@ namespace cis237_assignment4
         {
             Console.Clear();
             Console.Write(MaterialSelection());
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             string material = DetermineMaterial();
             return material;
         }
@@ -290,7 +290,7 @@ namespace cis237_assignment4
         {
             Console.Clear();
             Console.Write(ColorSelection());
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             string color = DetermineColor();
             return color;
         }
@@ -301,7 +301,7 @@ namespace cis237_assignment4
         /// <returns>string</returns>
         private string ChooseToolboxOption()
         {
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("Would you like to add a toolbox ($15) to this model (Y/N)? ");
             string toolboxChoice = Console.ReadLine().ToUpper();
             switch (toolboxChoice)
@@ -326,7 +326,7 @@ namespace cis237_assignment4
         /// <returns>string</returns>
         private string ChooseArmOption()
         {
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("Would you like to add a utility arm ($10) to this model (Y/N)? ");
             string arm = Console.ReadLine().ToUpper();
             switch (arm)
@@ -351,7 +351,7 @@ namespace cis237_assignment4
         /// <returns>string</returns>
         private string ChooseComputerConnectionOption()
         {
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("Would you like to add a computer connection ($20) to this model (Y/N)? ");
             string compcnxn = Console.ReadLine().ToUpper();
             switch (compcnxn)
@@ -376,7 +376,7 @@ namespace cis237_assignment4
         /// <returns>string[]</returns>
         private string[] ChooseJanitorDroidSpecifics()
         {
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("Would you like to add a trash compactor ($15) to this model (Y/N)? ");
             string compactorChoice = Console.ReadLine().ToUpper();
             switch (compactorChoice)
@@ -392,7 +392,7 @@ namespace cis237_assignment4
                     break;
             }
 
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("Would you like to add a vacuum to this model (Y/N)? ");
             string vacuumChoice = Console.ReadLine().ToUpper();
             switch (vacuumChoice)
@@ -417,7 +417,7 @@ namespace cis237_assignment4
         /// <returns>string[]</returns>
         private string[] ChooseAstromechDroidSpecifics()
         {
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("Would you like to add a fire extinguisher ($35) to this model (Y/N)? ");
             string extinguisherChoice = Console.ReadLine().ToUpper();
             switch (extinguisherChoice)
@@ -433,7 +433,7 @@ namespace cis237_assignment4
                     break;
             }
 
-            Console.Write("\n\n\t\t\t");
+            Console.Write("\n\n\t\t\t\t\t");
             Console.Write("How many ships would you like to support? ");
             string ships = Console.ReadLine();
             int number;
