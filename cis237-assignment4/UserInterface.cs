@@ -41,7 +41,7 @@ namespace cis237_assignment4
         public string DroidSelection()
         {
             Console.ResetColor();
-            menuString = ("\n\n\n\n\n\t\t\t--- SELECT A DROID TYPE ---\n\n" +
+            menuString = ("\n\n\n\n\n\t\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
                           "\t\t\t\t\t--- BASE UNIT COST (ALL DROIDS): $20 ---\n\n" +
                           "\t\t\t\t\t(P) Protocol Droid \n" +
                           "\t\t\t\t\t(U) Utility Droid\n" +
@@ -58,7 +58,7 @@ namespace cis237_assignment4
         public string MaterialSelection()
         {
             Console.ResetColor();
-            menuString = "\n\n\n\n\n\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
+            menuString = "\n\n\n\n\n\t\t\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
                          "\t\t\t\t\t(P) Polyskin ($15)\n" +
                          "\t\t\t\t\t(M) Metaskin ($25)\n" +
                          "\t\t\t\t\t(C) Ceraskin ($50)\n";
@@ -73,7 +73,7 @@ namespace cis237_assignment4
         {
             Console.Clear();
             Console.ResetColor();
-            menuString = "\n\n\n\n\n\t\t\t--- SELECT A COLOR ---\n\n" +
+            menuString = "\n\n\n\n\n\t\t\t\t\t--- SELECT A COLOR ---\n\n" +
                          "\t\t\t\t\t(B) Black ($10)\n" +
                          "\t\t\t\t\t(R) Red ($15)\n" +
                          "\t\t\t\t\t(W) White ($20)\n";
@@ -124,7 +124,7 @@ namespace cis237_assignment4
         public string InvalidOptionMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string invalidOption = "\n\n\t\t\tInvalid option. Please select a valid option from the menu.";
+            string invalidOption = "\n\n\t\t\t\t\tInvalid option. Please select a valid option from the menu.";
             return invalidOption;
         }
 
@@ -189,8 +189,8 @@ namespace cis237_assignment4
         public string InvalidInformation()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string invalidOption = "\n\n\t\t\tIt seems you've entered some incorrect information.";
-            invalidOption += "\n\n\t\t\tDROID NOT ADDED.";
+            string invalidOption = "\n\n\t\t\t\t\tIt seems you've entered some incorrect information.";
+            invalidOption += "\n\n\t\t\t\t\tDROID NOT ADDED.";
             invalidOption += "\n\t\t\t\t\tPlease Re-enter this droid's information.";
             return invalidOption;
         }
