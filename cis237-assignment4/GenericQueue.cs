@@ -10,6 +10,10 @@ using System;
 
 namespace cis237_assignment4
 {
+    /// <summary>
+    /// A generic queue class in the style of a linked list that implements the interface IGenericQueue. 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class GenericQueue<T> : IGenericQueue<T>
     {
         protected class Node
@@ -29,10 +33,7 @@ namespace cis237_assignment4
 
         public int Size
         {
-            get
-            {
-                return size;
-            }
+            get { return size; }
         }
 
         public void Enqueue(T Data)

@@ -8,6 +8,10 @@
 
 namespace cis237_assignment4
 {
+    /// <summary>
+    /// Enforces methods and properties used by the GenericQueue class.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     interface IGenericQueue<T>
     {
         void Enqueue(T Data);

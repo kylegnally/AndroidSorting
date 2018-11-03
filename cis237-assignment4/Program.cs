@@ -17,17 +17,13 @@ namespace cis237_assignment4
 
             string menuChoice = null;
             string droidTypeChoice = null;
-
             string outputString = "";
 
-            // instantiate the user interface
             UserInterface aMenu = new UserInterface();
-
-            // instantiate the collection
             DroidCollection collection = new DroidCollection();
+
             DisplayMainMenu();
 
-            // Main menu
             void DisplayMainMenu()
             {
                 Console.Clear();
@@ -37,7 +33,6 @@ namespace cis237_assignment4
                 HandleMainMenuInput(menuChoice);
             }
 
-            // droid menu
             void DisplayDroidMenu()
             {
                 Console.Clear();
@@ -48,7 +43,6 @@ namespace cis237_assignment4
                 HandleDroidMenuInput(droidType);
             }
 
-            // main menu input handler
             void HandleMainMenuInput(string userSelection)
             {
                 userSelection = userSelection.ToUpper();

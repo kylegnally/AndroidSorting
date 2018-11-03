@@ -21,12 +21,7 @@
  *  Modified for this purpose by Kyle Nally
  */
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace cis237_assignment4
 {
@@ -46,7 +41,7 @@ namespace cis237_assignment4
         public MergeSort(IDroid[] droids)
         {
             Droids = droids;
-            MergeSort.sort(Droids);
+            sort(Droids);
         }
 
         // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
