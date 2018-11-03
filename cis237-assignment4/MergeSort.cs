@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,8 @@ namespace cis237_assignment4
         private static void merge(IDroid[] a, IDroid[] aux, int lo, int mid, int hi)
         {
             // precondition: a[lo .. mid] and a[mid+1 .. hi] are sorted subarrays
-            //assert isSorted(a, lo, mid);
-            //assert isSorted(a, mid+1, hi);
+            Debug.Assert(isSorted(a, lo, mid));
+            Debug.Assert(isSorted(a, mid+1, hi));
 
             // copy to aux[]
             for (int k = lo; k <= hi; k++)
@@ -44,17 +45,14 @@ namespace cis237_assignment4
             int i = lo, j = mid + 1;
             for (int k = lo; k <= hi; k++)
             {
-                if (aux[j] != null)
-                {
-                    if (i > mid) a[k] = aux[j++];
-                    else if (j > hi) a[k] = aux[i++];
-                    else if (less(aux[j], aux[i])) a[k] = aux[j++];
-                    else a[k] = aux[i++];
-                }
+                if (i > mid) a[k] = aux[j++];
+                else if (j > hi) a[k] = aux[i++];
+                else if (less(aux[j], aux[i])) a[k] = aux[j++];
+                else a[k] = aux[i++];
             }
 
             // postcondition: a[lo .. hi] is sorted
-            //assert isSorted(a, lo, hi);
+            Debug.Assert(isSorted(a, lo, hi));
         }
 
         // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
@@ -85,7 +83,7 @@ namespace cis237_assignment4
         {
             IDroid[] aux = new IDroid[a.Length];
             sort(a, aux, 0, a.Length- 1);
-            //assert isSorted(a);
+            Debug.Assert(isSorted(a));
         }
 
 
@@ -96,12 +94,8 @@ namespace cis237_assignment4
         // is v < w ?
         private static bool less(IDroid v, IDroid w)
         {
-            if (v != null || w != null)
-            {
-                return v.CompareTo(w) < 0;
-            }
-
-            return false;
+            if (v == null || w == null) return false;
+            return v.CompareTo(w) < 0;
         }
 
         /***************************************************************************
