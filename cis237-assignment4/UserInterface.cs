@@ -28,7 +28,7 @@ namespace cis237_assignment4
                 "\t\t\t(A) Add a droid to the list\n" +
                 "\t\t\t(T) Add some test data to the list\n" +
                 "\t\t\t(P) Print the list of droids currently in inventory\n" +
-                "\t\t\t(C) Categorize the list of droids in this order: Astromech, Utility, Janitor, Protocol\n" +
+                "\t\t\t(C) Categorize the list of droids in this order: Astromech, Janitor, Utility, Protocol\n" +
                 "\t\t\t(M) Merge sort by Total Cost\n" +
                 "\t\t\t(Q) Quit\n\n";
             return menuString;
