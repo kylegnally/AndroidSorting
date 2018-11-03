@@ -56,7 +56,6 @@ namespace cis237_assignment4
                     case "P":
                         Console.Write(aMenu.PrintListMessage());
                         string[] allDroids = collection.PrintTheDroidsInventory();
-                        //aMenu.PrintDroidList(allDroids);
                         aMenu.Pause();
                         aMenu.WaitForUser();
                         DisplayMainMenu();
@@ -88,18 +87,24 @@ namespace cis237_assignment4
                 // protocol
                 collection.Add("Polyskin", "Red", 6);
                 collection.Add("Metaskin", "Black", 23);
+                collection.Add("Ceraskin", "White", 13);
 
                 // astromech
                 collection.Add("Polyskin", "White", false, false, true, true, 12);
-                collection.Add("Polyskin", "White", false, true, false, true, 24);
+                collection.Add("Metaskin", "Black", false, false, false, true, 36);
+                collection.Add("Metaskin", "Red", false, true, false, true, 24);
 
                 // janitor
                 collection.Add("Ceraskin", "Red", false, true, false, true, false);
-                collection.Add("Ceraskin", "Red", true, false, true, false, true);
+                collection.Add("Metaskin", "White", false, false, true, false, false);
+                collection.Add("Polyskin", "Black", true, false, true, true, true);
 
                 // utility
                 collection.Add("Metaskin", "Red", false, true, false);
-                collection.Add("Metaskin", "Red", true, false, true);
+                collection.Add("Polyskin", "White", true, true, false);
+                collection.Add("Ceraskin", "Black", true, false, true);
+
+
                 Console.WriteLine(aMenu.TestDataAdded());
                 aMenu.Pause();
                 DisplayMainMenu();

@@ -12,11 +12,7 @@ namespace cis237_assignment4
         void Add(string material, string color, bool hasToolBox, bool hasComputerConnection, bool hasArm, bool hasTrashCompactor, bool hasVaccum);
         void Add(string material, string color, bool hasToolBox, bool hasComputerConnection, bool hasArm, bool hasFireExtinguisher, int numberOfShips);
 
-        void AddToStacks();
-
-        void StacksToQueue();
-
-        void QueueToArray();
+        void CategorizeByModel();
         // Method to get the data for a droid into a nicely formated string that can be output.
         string[] PrintTheDroidsInventory();
     }

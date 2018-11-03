@@ -178,6 +178,8 @@ namespace cis237_assignment4
             return allDroids;
         }
 
+        // method required by IDroidCollection. The methods it calls are protected so we can't
+        // call them from outside this class
         public void CategorizeByModel()
         {
             AddToStacks();
@@ -186,7 +188,7 @@ namespace cis237_assignment4
         }
 
         // required modified bucket sort method
-        public void AddToStacks()
+        protected void AddToStacks()
         {
 
             foreach (Droid droid in droids)
@@ -199,38 +201,42 @@ namespace cis237_assignment4
                     else if (droid is ProtocolDroid) pDroidStack.Push(droid);
                 }
             }
+
+            return;
         }
 
         // send each the stacks into a queue in the required order
-        public void StacksToQueue()
+        protected void StacksToQueue()
         {
-            for (int i = 0; i < aDroidStack.Size + 1; i++)
+            while (aDroidStack.Size != 0)
             {
                 droidQueue.Enqueue(aDroidStack.Pop());
             }
 
-            for (int i = 0; i < jDroidStack.Size + 1; i++)
+            while (jDroidStack.Size != 0)
             {
                 droidQueue.Enqueue(jDroidStack.Pop());
             }
 
-            for (int i = 0; i < uDroidStack.Size + 1; i++)
+            while (uDroidStack.Size != 0)
             {
                 droidQueue.Enqueue(uDroidStack.Pop());
             }
 
-            for (int i = 0; i < pDroidStack.Size + 1; i++)
+            while (pDroidStack.Size != 0)
             {
                 droidQueue.Enqueue(pDroidStack.Pop());
             }
+
+            return;
         }
 
         // send the queue into the original array, overwriting its contents
-        public void QueueToArray()
+        protected void QueueToArray()
         {
             int i = 0;
 
-            // a for loop can't work here because the counter increments while the queue counter decrements,
+            // a for loop can't work here because its counter increments while the queue counter decrements,
             // so to get all the droids we just keep track of the queue size and stop when we get cake
             while (droidQueue.Size != 0)
             {
