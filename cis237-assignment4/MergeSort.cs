@@ -47,9 +47,6 @@ namespace cis237_assignment4
         // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
         private static void Merge(IDroid[] a, IDroid[] aux, int lo, int mid, int hi)
         {
-            // precondition: a[lo .. mid] and a[mid+1 .. hi] are sorted subarrays
-            Debug.Assert(IsSorted(a, lo, mid));
-            Debug.Assert(IsSorted(a, mid+1, hi));
 
             // copy to aux[]
             for (int k = lo; k <= hi; k++)
@@ -66,9 +63,6 @@ namespace cis237_assignment4
                 else if (Less(aux[j], aux[i])) a[k] = aux[j++];
                 else a[k] = aux[i++];
             }
-
-            // postcondition: a[lo .. hi] is sorted
-            Debug.Assert(IsSorted(a, lo, hi));
         }
 
         // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
@@ -98,8 +92,7 @@ namespace cis237_assignment4
         public static void Sort(IDroid[] a)
         {
             IDroid[] aux = new IDroid[a.Length];
-            Sort(a, aux, 0, a.Length- 1);
-            Debug.Assert(IsSorted(a));
+            Sort(a, aux, 0, a.Length - 1);
         }
 
 
@@ -112,21 +105,6 @@ namespace cis237_assignment4
         {
             if (v == null || w == null) return false;
             return v.CompareTo(w) < 0;
-        }
-
-        /***************************************************************************
-         *  Check if array is sorted - useful for debugging.
-         ***************************************************************************/
-        private static bool IsSorted(IDroid[] a)
-        {
-            return IsSorted(a, 0, a.Length - 1);
-        }
-
-        private static bool IsSorted(IDroid[] a, int lo, int hi)
-        {
-            for (int i = lo + 1; i <= hi; i++)
-                if (Less(a[i], a[i - 1])) return false;
-            return true;
         }
     }
 }
