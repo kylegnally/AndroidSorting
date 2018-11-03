@@ -184,8 +184,11 @@ namespace cis237_assignment4
             return allDroids;
         }
 
-        // method required by IDroidCollection. The methods it calls are protected so we can't
-        // call them from outside this class
+        /// <summary>
+        /// Public method used to call the private methods involved in using the GenericStack
+        /// and GenericQueue classes. This method represents the only entry point to using
+        /// those classes.
+        /// </summary>
         public void CategorizeByModel()
         {
             AddToStacks();
@@ -193,12 +196,20 @@ namespace cis237_assignment4
             QueueToArray();
         }
 
+        /// <summary>
+        /// Method to send the array of droids into the MergeSort class for sorting by
+        /// the TotalCost of each droid.
+        /// </summary>
         public void MergeSortByTotalCost()
         {
             MergeSort mergeSort = new MergeSort(this.droids);
         }
 
-        // required modified bucket sort method
+        /// <summary>
+        /// Required modified bucket sort method. Tests each droid in the droids array to determine
+        /// its type, then pushes that droid onto the appropriate stack. This method is protected
+        /// and can only be accessed via the CategorizeByModel method.
+        /// </summary>
         protected void AddToStacks()
         {
 
@@ -216,7 +227,12 @@ namespace cis237_assignment4
             return;
         }
 
-        // send each the stacks into a queue in the required order
+        /// <summary>
+        /// Method to send the droids on each stack into a single queue in the order required.
+        /// Tests to see if the size is zero and, if it is not, enqueues each droid by utilizing
+        /// the Pop method in the GenericStack class. This method is protected
+        /// and can only be accessed via the CategorizeByModel method.
+        /// </summary>
         protected void StacksToQueue()
         {
             while (aDroidStack.Size != 0)
@@ -242,13 +258,16 @@ namespace cis237_assignment4
             return;
         }
 
-        // send the queue into the original array, overwriting its contents
+        /// <summary>
+        /// Sends each droid in the queue created by the GenericQueue class into the droids array
+        /// by using a while loop to determine if the queue size is zero, setting the droid in
+        /// index i equal to that droid in the queue, and then incrementing the counter.
+        /// This method is protected and can only be accessed via the CategorizeByModel method.
+        /// </summary>
         protected void QueueToArray()
         {
             int i = 0;
 
-            // a for loop can't work here because its counter increments while the queue counter decrements,
-            // so to get all the droids we just keep track of the queue size and stop when we get cake
             while (droidQueue.Size != 0)
             {
                 IDroid droid = droidQueue.Dequeue();
