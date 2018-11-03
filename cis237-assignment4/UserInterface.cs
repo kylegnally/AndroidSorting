@@ -1,7 +1,13 @@
-﻿using System;
+﻿/************************************************************************************
+ *
+ * Kyle Nally
+ * CIS237 T/Th 3:30pm Assignment 4 - Algorithms: Modified Bucket Sort and Merge Sort
+ * 11/3/2018
+ *
+ ************************************************************************************/
+
+using System;
 using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 
 namespace cis237_assignment4
 {
