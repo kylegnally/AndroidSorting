@@ -25,7 +25,7 @@ namespace cis237_assignment4
         /// </summary>
         public DroidCollection()
         {
-            droids = new Droid[6];
+            droids = new Droid[100];
             collectionPosition = 0;
         }
 

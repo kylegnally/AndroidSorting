@@ -25,7 +25,7 @@ namespace cis237_assignment4
         {
             Droids = droids;
             MergeSort.sort(Droids);
-            show(Droids);
+            //show(Droids);
         }
 
         // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
@@ -166,13 +166,13 @@ namespace cis237_assignment4
             merge(a, index, aux, lo, mid, hi);
         }
 
-        //print array to standard output
-        private static void show(IDroid[] a)
-        {
-            for (int i = 0; i < a.Length; i++)
-            {
-                Console.WriteLine(a[i]);
-            }
-        }
+        ////print array to standard output
+        //private static void show(IDroid[] a)
+        //{
+        //    for (int i = 0; i < a.Length; i++)
+        //    {
+        //        Console.WriteLine(a[i]);
+        //    }
+        //}
     }
 }
