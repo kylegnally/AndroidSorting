@@ -151,6 +151,28 @@ namespace cis237_assignment4
         }
 
         /// <summary>
+        /// If called, informs the user that There are no droids to sort. Returns a string.
+        /// </summary>
+        /// <returns>string</returns>
+        public string NothingToSort()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            string droidsSortedByCategory = "\n\n\t\t\tThere are no droids in the inventory to sort.";
+            return droidsSortedByCategory;
+        }
+
+        /// <summary>
+        /// If called, informs the user that There are no droids to display. Returns a string.
+        /// </summary>
+        /// <returns>string</returns>
+        public string NothingToPrint()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            string droidsSortedByCategory = "\n\n\t\t\tThere are no droids in the inventory.";
+            return droidsSortedByCategory;
+        }
+
+        /// <summary>
         /// If called, informs the user that the droids have been sorted by cost. Returns a string.
         /// </summary>
         /// <returns>string</returns>

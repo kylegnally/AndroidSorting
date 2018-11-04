@@ -46,27 +46,52 @@ namespace cis237_assignment4
                     case "A":
                         DisplayDroidMenu();
                         break;
+
                     case "T":
                         AddTestData();
+                        Console.WriteLine(aMenu.TestDataAdded());
+                        aMenu.Pause();
+                        DisplayMainMenu();
                         break;
 
                     case "P":
-                        Console.Write(aMenu.PrintListMessage());
-                        string[] allDroids = collection.PrintTheDroidsInventory();
+                        if (IsEmpty())
+                        {
+                            Console.WriteLine(aMenu.NothingToPrint());
+                        }
+                        else
+                        {
+                            Console.Write(aMenu.PrintListMessage());
+                            string[] allDroids = collection.PrintTheDroidsInventory();
+                            aMenu.WaitForUser();
+                        }
                         aMenu.Pause();
-                        aMenu.WaitForUser();
                         DisplayMainMenu();
                         break;
 
                     case "C":
-                        collection.CategorizeByModel();
-                        Console.WriteLine(aMenu.DroidsSortedByCategory());
+                        if (IsEmpty())
+                        {
+                            Console.WriteLine(aMenu.NothingToSort());
+                        }
+                        else
+                        {
+                            collection.CategorizeByModel();
+                            Console.WriteLine(aMenu.DroidsSortedByCategory());
+                        }
                         aMenu.Pause();
                         DisplayMainMenu();
                         break;
                     case "M":
-                        collection.MergeSortByTotalCost();
-                        Console.WriteLine(aMenu.DroidsSortedByTotalCost());
+                        if (IsEmpty())
+                        {
+                            Console.WriteLine(aMenu.NothingToSort());
+                        }
+                        else
+                        {
+                            collection.MergeSortByTotalCost();
+                            Console.WriteLine(aMenu.DroidsSortedByTotalCost());
+                        }
                         aMenu.Pause();
                         DisplayMainMenu();
                         break;
@@ -106,11 +131,6 @@ namespace cis237_assignment4
                 collection.Add("Metaskin", "Red", false, true, false);
                 collection.Add("Polyskin", "White", true, true, false);
                 collection.Add("Ceraskin", "Black", true, false, true);
-
-
-                Console.WriteLine(aMenu.TestDataAdded());
-                aMenu.Pause();
-                DisplayMainMenu();
             }
 
             // droid menu input handler
@@ -185,6 +205,11 @@ namespace cis237_assignment4
                 Console.Write(aMenu.InvalidInformation());
                 aMenu.Pause();
                 Console.ResetColor();
+            }
+
+            bool IsEmpty()
+            {
+                return collection.IsEmpty(collection.GetDroidArray());
             }
         }
     }

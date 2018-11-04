@@ -34,7 +34,7 @@ namespace cis237_assignment4
             droids = new Droid[100];
             collectionPosition = 0;
         }
-
+        
         /******************************************************************************
          *
          *  Overloaded Add methods. These add the four droid types to the collection.
@@ -194,6 +194,27 @@ namespace cis237_assignment4
             AddToStacks();
             StacksToQueue();
             QueueToArray();
+        }
+
+        /// <summary>
+        /// Check to see if there's anything in the array. Returns true if the array is empty.
+        /// </summary>
+        /// <param name="droids"></param>
+        /// <returns></returns>
+        public bool IsEmpty(IDroid[] droids)
+        {
+            if (droids[0] == null) return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Method to return the array contained within the collection. Used during IsEmpty check
+        /// in Program class.
+        /// </summary>
+        /// <returns></returns>
+        public IDroid[] GetDroidArray()
+        {
+            return droids;
         }
 
         /// <summary>
