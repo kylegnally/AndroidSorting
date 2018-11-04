@@ -14,11 +14,6 @@ namespace cis237_assignment4
     {
         static void Main(string[] args)
         {
-
-            string menuChoice = null;
-            string droidTypeChoice = null;
-            string outputString = "";
-
             UserInterface aMenu = new UserInterface();
             DroidCollection collection = new DroidCollection();
 
@@ -29,7 +24,7 @@ namespace cis237_assignment4
                 Console.Clear();
                 Console.Write(aMenu.MainMenu());
                 Console.Write("\n\n\t\t\t");
-                menuChoice = Console.ReadLine();
+                var menuChoice = Console.ReadLine();
                 HandleMainMenuInput(menuChoice);
             }
 
