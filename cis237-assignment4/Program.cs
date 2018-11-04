@@ -65,7 +65,6 @@ namespace cis237_assignment4
                             string[] allDroids = collection.PrintTheDroidsInventory();
                             aMenu.WaitForUser();
                         }
-                        aMenu.Pause();
                         DisplayMainMenu();
                         break;
 
