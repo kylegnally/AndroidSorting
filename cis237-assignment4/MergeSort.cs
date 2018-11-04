@@ -103,7 +103,7 @@ namespace cis237_assignment4
         // is v < w ?
         private static bool Less(IDroid v, IDroid w)
         {
-            if (v == null || w == null) return false;
+            if (v == null /*|| w == null*/) return false;
             return v.CompareTo(w) < 0;
         }
     }
