@@ -44,7 +44,9 @@ namespace cis237_assignment4
             CalculateSubtotal();
         }
 
-        // subtotal method used to add skin and color costs to the base cost
+        /// <summary>
+        /// Subtotal method used to add skin and color costs to the base cost.
+        /// </summary>
         private void CalculateSubtotal()
         {
             if (this.Material == "Polyskin") BaseCost += POLYSKIN_MAT_COST;
@@ -55,8 +57,13 @@ namespace cis237_assignment4
             if (this.Color == "White") BaseCost += COLOR_WHITE_COST;
         }
 
-        // Called by the MergeSort class. Compares two droids' TotalCost properties
-        // and returns -1, 0, or 1 (less than, equal to, or greater than) for this.TotalCost
+        /// <summary>
+        /// Required IComparable implementation method. Compares two droids' TotalCost properties
+        /// and returns -1, 0, or 1 (less than, equal to, or greater than) for this.TotalCost.
+        /// Called from MergeSort class. 
+        /// </summary>
+        /// <param name="droid"></param>
+        /// <returns></returns>
         public int CompareTo(object droid)
         {
             if (droid == null) return 1;
