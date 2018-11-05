@@ -68,10 +68,10 @@ namespace cis237_assignment4
         {
             //if (droid == null) return 1;
 
-            if (droid is Droid otherDroid)
+            if (droid is IDroid otherDroid)
                 return this.TotalCost.CompareTo(otherDroid.TotalCost);
             else
-                throw new ArgumentException("Object is not a TotalCost");
+                throw new ArgumentException("Object is not a Droid");
         }
 
         /// <summary>
