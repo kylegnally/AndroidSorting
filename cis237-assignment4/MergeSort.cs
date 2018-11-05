@@ -28,7 +28,7 @@ namespace cis237_assignment4
     class MergeSort
     {
         // This class should not be instantiated.
-        private MergeSort() { }
+        //private MergeSort() { }
 
         private IDroid[] Droids;
         private IDroid[] aux;
@@ -89,7 +89,7 @@ namespace cis237_assignment4
         // this is called from the outside
         // the methods have different signatures so the recursive call will be made
         // to the above method
-        public static void Sort(IDroid[] a)
+        private static void Sort(IDroid[] a)
         {
             IDroid[] aux = new IDroid[a.Length];
             Sort(a, aux, 0, a.Length - 1);
