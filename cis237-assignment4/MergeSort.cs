@@ -27,24 +27,28 @@ namespace cis237_assignment4
 {
     class MergeSort
     {
-        // This class should not be instantiated.
-        //private MergeSort() { }
-
         private IDroid[] Droids;
         private IDroid[] aux;
-        /**
-         * Reads in a sequence of strings from standard input; mergesorts them; 
-         * and prints them to standard output in ascending order. 
-         *
-         * @param args the command-line arguments
-         */
+
+        /// <summary>
+        /// Reads in a sequence of strings from standard input; mergesorts them; 
+        /// and prints them to standard output in ascending order.
+        /// </summary>
+        /// <param name="droids"></param>
         public MergeSort(IDroid[] droids)
         {
             Droids = droids;
             Sort(Droids);
         }
 
-        // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
+        /// <summary>
+        /// stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="aux"></param>
+        /// <param name="lo"></param>
+        /// <param name="mid"></param>
+        /// <param name="hi"></param>
         private static void Merge(IDroid[] a, IDroid[] aux, int lo, int mid, int hi)
         {
 
@@ -65,33 +69,44 @@ namespace cis237_assignment4
             }
         }
 
-        // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
-        // this is called from inside the class
+        /// <summary>
+        /// mergesort a[lo..hi] using auxiliary array aux[lo..hi]. This is called from inside the MergeSort class.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="aux"></param>
+        /// <param name="lo"></param>
+        /// <param name="hi"></param>
         private static void Sort(IDroid[] a, IDroid[] aux, int lo, int hi)
         {
-            if (hi <= lo) return; // this is the base case
-                                  // it's importat that the midpoint is done this way
+            // this is the base case
+            if (hi <= lo) return; 
+                                
+            // find the midpoint of the array
             int mid = lo + (hi - lo) / 2;
-            // left half
+
+            // sort the "left" half
             Sort(a, aux, lo, mid);
 
-            // right half
+            // sort the "right" half
             Sort(a, aux, mid + 1, hi);
 
             // merge them
             Merge(a, aux, lo, mid, hi);
         }
 
-        /**
-         * Rearranges the array in ascending order, using the natural order.
-         * @param a the array to be sorted
-         */
-        // this is called from the outside
-        // the methods have different signatures so the recursive call will be made
-        // to the above method
+        /// <summary>
+        /// Rearranges the array in ascending order, using the natural order.
+        /// This method is called from the MergeSort constructor.
+        /// The two Sort methods have different signatures, so the recursive call will be made
+        /// to the Srt method Sort(IDroid[] a, IDroid[] aux, int lo, int hi).
+        /// </summary>
+        /// <param name="a"></param>
         private static void Sort(IDroid[] a)
         {
+            // create an IDroid[], aux, equal in length to a[]
             IDroid[] aux = new IDroid[a.Length];
+
+            // sort ausing auxiliary array aux, starting at zero, with the length of array a minus one
             Sort(a, aux, 0, a.Length - 1);
         }
 
@@ -100,7 +115,14 @@ namespace cis237_assignment4
          *  Helper sorting function.
          ***************************************************************************/
 
-        // is v < w ?
+        /// <summary>
+        /// This method does a null check on IDroid v. If v is null, it returns false.
+        /// It then returns a bool based on the result of the CompareTo method in the
+        /// Droid class.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="w"></param>
+        /// <returns>bool</returns>
         private static bool Less(IDroid v, IDroid w)
         {
             if (v == null /*|| w == null*/) return false;

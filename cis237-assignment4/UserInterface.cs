@@ -113,7 +113,7 @@ namespace cis237_assignment4
         public string QuitProgramMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string searchListMessage = "\n\n\t\t\t\t\tExiting program.";
+            string searchListMessage = "\n\n\t\t\tExiting program.";
             return searchListMessage;
         }
 
