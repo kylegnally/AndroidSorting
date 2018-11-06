@@ -6,8 +6,12 @@
  *
  ************************************************************************************/
 
+
 namespace cis237_assignment4
 {
+    /// <summary>
+    /// Interface to provide methods required for implementing a generic stack.
+    /// </summary>
     interface IGenericStack<T>
     {
         void Push(T Data);

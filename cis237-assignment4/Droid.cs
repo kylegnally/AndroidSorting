@@ -58,12 +58,12 @@ namespace cis237_assignment4
         }
 
         /// <summary>
-        /// Required IComparable implementation method. Compares two droids' TotalCost properties
+        /// Required IComparable CompareTo implementation. Compares two droids' TotalCost properties
         /// and returns -1, 0, or 1 (less than, equal to, or greater than) for this.TotalCost.
         /// Called from MergeSort class. 
         /// </summary>
         /// <param name="droid"></param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         public int CompareTo(object droid)
         {
             //if (droid == null) return 1;

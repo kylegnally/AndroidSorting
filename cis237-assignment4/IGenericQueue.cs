@@ -9,7 +9,7 @@
 namespace cis237_assignment4
 {
     /// <summary>
-    /// Enforces methods and properties used by the GenericQueue class.
+    /// Interface to provide methods required for implementing a generic queue.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     interface IGenericQueue<T>

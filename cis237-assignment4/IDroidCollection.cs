@@ -58,7 +58,7 @@ namespace cis237_assignment4
         void CategorizeByModel();
 
         /// <summary>
-        /// Method to perform a merge sort on the droids.
+        /// Method to perform a merge sort on the droids by their TotalCost property.
         /// </summary>
         void MergeSortByTotalCost();
 
