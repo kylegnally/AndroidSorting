@@ -84,10 +84,10 @@ namespace cis237_assignment4
             // find the midpoint of the array
             int mid = lo + (hi - lo) / 2;
 
-            // sort the "left" half
+            // sort the "left" half. Recursive call.
             Sort(a, aux, lo, mid);
 
-            // sort the "right" half
+            // sort the "right" half. Recursive call.
             Sort(a, aux, mid + 1, hi);
 
             // merge them
@@ -125,7 +125,7 @@ namespace cis237_assignment4
         /// <returns>bool</returns>
         private static bool Less(IDroid v, IDroid w)
         {
-            if (v == null /*|| w == null*/) return false;
+            if (v == null) return false;
             return v.CompareTo(w) < 0;
         }
     }

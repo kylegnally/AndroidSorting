@@ -66,8 +66,6 @@ namespace cis237_assignment4
         /// <returns>int</returns>
         public int CompareTo(object droid)
         {
-            //if (droid == null) return 1;
-
             if (droid is IDroid otherDroid)
                 return this.TotalCost.CompareTo(otherDroid.TotalCost);
             else
