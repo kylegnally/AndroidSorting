@@ -58,6 +58,7 @@ namespace cis237_assignment4
                         if (IsEmpty())
                         {
                             Console.WriteLine(aMenu.NothingToPrint());
+                            aMenu.Pause();
                         }
                         else
                         {
